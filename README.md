@@ -1,9 +1,6 @@
 # NV oOS MCP Gateway
 # ==================
 
-<img width="1211" height="518" alt="Screenshot 2026-10-06 155037" src="https://github.com/user-attachments/assets/c5bd50d6-6fb3-4c20-b568-dfaffaf9060b" />
-
-
 A public, fleet-scoped **Model Context Protocol** endpoint for the
 [NV oOS (Open Operator System)](https://github.com/nvdigitalsolutions/mcp-ai-wpoos)
 WordPress platform. One API key, every bound site — tools appear namespaced
@@ -48,7 +45,8 @@ Deployment target: **Cloudways Velocity** (managed Node hosting) at
 | `NVOOS_SITE_<SLUG>_URL` | per site | Upstream MCP endpoint, full URL incl. `/wp-json/mcp-ai/v1/mcp` |
 | `NVOOS_SITE_<SLUG>_TOKEN` | per site | Fleet Operator token (`op_xxxx.SECRET`); never logged or returned |
 | `AUTH_MODE` | no | `strict` (default) fails closed at boot when no keys are set |
-| `UPSTREAM_TIMEOUT_MS` | no | Per-site timeout (default 20000) |
+| `UPSTREAM_TIMEOUT_MS` | no | Per-site timeout for tools/list + notifications (default 20000) |
+| `UPSTREAM_TOOL_TIMEOUT_MS` | no | tools/call budget only — long-running tools get more room without slowing tools/list (default: `UPSTREAM_TIMEOUT_MS`) |
 | `TRUST_PROXY` | yes on Velocity | `1` — NGINX sets X-Forwarded-For |
 | `ALLOWED_ORIGINS` | no | Comma-separated CORS origins for browser-based clients |
 | `MAX_JSON_BODY` | no | Body limit (default `1mb`) |
